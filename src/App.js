@@ -7,8 +7,7 @@ import Navbar from './components/Navbar';
 const App = () => (
   <Router>
     <div>
-      <Navbar/>
-
+      { /*!this.props.history === '/' ? <Navbar/> : <div></div> */}
       <Route path="/" exact component={Home} />
       <Route path="/login" exact component={Login} />
     </div>
