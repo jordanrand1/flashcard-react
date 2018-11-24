@@ -1,41 +1,37 @@
 import React from 'react';
-import { Menu, Segment } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+import { Menu } from 'semantic-ui-react';
+import { NavLink } from 'react-router-dom';
+import styled from 'styled-components';
 
-class Navbar extends React.Component {
-  state = { activeItem: 'home' }
+const NavItem = styled(NavLink)`
+position: relative;
+vertical-align: middle;
+line-height: 1;
+text-decoration: none;
+-webkit-tap-highlight-color: transparent;
+-webkit-box-flex: 0;
+flex: 0 0 auto;
+padding: .92857143em 1.14285714em;
+text-transform: none;
+font-weight: 400;
+background: 0 0;
+color: rgba(255,255,255,.9);
+`
 
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
-
-  render() {
-    const { activeItem } = this.state
-
-    return (
-        <Menu inverted pointing fixed='top'>
-          <Menu.Item name='home' active={activeItem === 'home'} onClick={this.handleItemClick} />
-          <Menu.Item
-            name='messages'
-            active={activeItem === 'messages'}
-            onClick={this.handleItemClick}
-          />
-          <Menu.Item
-            name='friends'
-            active={activeItem === 'friends'}
-            onClick={this.handleItemClick}
-          />
-          <Menu.Menu position='right'>
-            <Link to='/login'>
-              <Menu.Item
-                name='login'
-                active={activeItem === 'login'}
-                onClick={this.handleItemClick}
-              />
-            </Link>
-          </Menu.Menu>
-        </Menu>
-
-    )
-  }
-}
+const Navbar = () => (
+    <Menu inverted>
+      <NavItem to='/'>
+        Home
+      </NavItem>
+      <NavItem to='/sets'>
+        My Sets
+      </NavItem>
+      <Menu.Menu position='right'>
+        <NavItem to='/login'>
+          Login
+        </NavItem>
+      </Menu.Menu>
+    </Menu>
+)
 
 export default Navbar;

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
 
-const Login = () => (
+const LoginForm = () => (
   <div className='login-form'>
     {/*
       Heads up! The styles below are necessary for the correct render of this example.
@@ -12,7 +12,7 @@ const Login = () => (
       body > div,
       body > div > div,
       body > div > div > div.login-form {
-        height: 100%;
+        
       }
     `}</style>
     <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
@@ -44,4 +44,4 @@ const Login = () => (
   </div>
 )
 
-export default Login
+export default LoginForm

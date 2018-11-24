@@ -6,17 +6,13 @@ import Navbar from './Navbar';
 import { connect } from 'react-redux';
 
 const App = () => (
-    <div>
+    <>
       <Navbar/>
       <Switch>
-      <Route path="/" exact component={Home} />
-      <Route path="/login" exact component={Login} />
+        <Route path="/" exact component={Home} />
+        <Route path="/login" exact component={Login} />
       </Switch>
-    </div>
+    </>
 )
 
-const mapStateToProps = (state) => {
-  return { state: state }
-}
-
-export default connect(mapStateToProps)(App);
+export default (App);
