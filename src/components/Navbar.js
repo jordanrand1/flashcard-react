@@ -5,21 +5,26 @@ import { Link } from 'react-router-dom';
 class Navbar extends React.Component {
   state = { activeItem: 'home' }
 
-  handleItemClick = (e, { name }) => {
-    this.setState({ activeItem: name })
-  }
+  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
   render() {
     const { activeItem } = this.state
 
     return (
-      <Segment inverted>
-        <Menu inverted fixed='top'>
-          <Link to="/">
-            <Menu.Item name='home' active={activeItem === 'home'} onClick={this.handleItemClick} />
-          </Link>
-          <Menu.Menu position="right">
-            <Link to="/login">
+        <Menu inverted pointing fixed='top'>
+          <Menu.Item name='home' active={activeItem === 'home'} onClick={this.handleItemClick} />
+          <Menu.Item
+            name='messages'
+            active={activeItem === 'messages'}
+            onClick={this.handleItemClick}
+          />
+          <Menu.Item
+            name='friends'
+            active={activeItem === 'friends'}
+            onClick={this.handleItemClick}
+          />
+          <Menu.Menu position='right'>
+            <Link to='/login'>
               <Menu.Item
                 name='login'
                 active={activeItem === 'login'}
@@ -28,7 +33,7 @@ class Navbar extends React.Component {
             </Link>
           </Menu.Menu>
         </Menu>
-      </Segment>
+
     )
   }
 }
