@@ -19,12 +19,12 @@ color: rgba(255,255,255,.9);
 `
 
 const Navbar = () => (
-    <Menu inverted>
+    <Menu inverted fixed='top'>
       <NavItem to='/'>
         Home
       </NavItem>
-      <NavItem to='/sets'>
-        My Sets
+      <NavItem to='/create'>
+        Create
       </NavItem>
       <Menu.Menu position='right'>
         <NavItem to='/login'>
