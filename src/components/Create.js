@@ -1,11 +1,25 @@
 import React from 'react';
-import { Input, TextArea, Form, Segment, Container } from 'semantic-ui-react';
+import { 
+  Input, 
+  TextArea, 
+  Form, 
+  Segment, 
+  Container, 
+  Button, 
+  Header,
+  Icon,
+  Label,
+} from 'semantic-ui-react';
 import styled from 'styled-components';
 import CardForm from './CardForm';
 
-const StyledInput = styled(Input)`
+const StyledContainer = styled(Container)`
   margin-top: 100px;
 ` 
+
+const StyledLabel = styled(Label)`
+padding-bottom: 14px;
+`
 
 class Create extends React.Component {
 
@@ -15,14 +29,6 @@ class Create extends React.Component {
     numberOfCards: 5,
     cardForms: [],
     cards: [],
-  }
-
-  handleClick = (e) => {
-    var temp = ''
-    if (this.node.contains(e.target)) {
-      console.log(e.target)
-      this.handleChange()
-    }
   }
 
   handleChange = (e) => {
@@ -56,21 +62,26 @@ class Create extends React.Component {
           cards.push({key: i, term: '', definition: ''})
           cardForms.push(
             <Form key={i}>
+            <Icon size="big" name="trash alternate"/>
             <TextArea
               placeholder="Term"
               name="term"
               tabIndex={i}
-              rows={2}
+              rows={1}
               autoHeight
+              style={styles.card}
               onChange={this.handleChange}
             >{this.state.cards[i].term}</TextArea>
+            <Label pointing='below'>Term</Label>
+            
             <TextArea
               placeholder="Definition"
               name="definition"
               tabIndex={i}
-              rows={2}
+              rows={1}
               autoHeight
               onChange={this.handleChange}
+              style={styles.card}
             >{this.state.cards[i].definition}</TextArea>
             </Form>
           )
@@ -82,25 +93,35 @@ class Create extends React.Component {
 
   render() {
     return (
-      <Container>
+      <StyledContainer>
         {this.createCardForms(true)}
-        <StyledInput
+        <Header as="h2">Create New Set</Header>
+        <Input
           placeholder="Title"
           name="title"
           value={this.state.title}
           onChange={this.handleChange}
         />
+        <Button.Group floated='right'>
+          <Button>One</Button>
+          <Button>Two</Button>
+          <Button>Three</Button>
+        </Button.Group>
         { this.state.cardForms.map((value, i) => {
           return(<Segment>{value}</Segment>)
         })}
-      </Container>
+      </StyledContainer>
     )
   }
 }
 
 const styles = {
-  title: {
-    marginTop: '100px',
+  card: {
+    width: '35%',
+    paddingTop: '2em',
+    border: '0px',
+    borderBottom: '2px solid black',
+    borderRadius: '0px',
   }
 }
 
